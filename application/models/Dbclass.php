@@ -46,16 +46,30 @@
             }
         }
 
-        function update($data, $tbl, $where)
+        function update($flds, $tbl, $where)
         {
             $this->db->where($where);
-            $this->db->update($tbl, $data);
+            $this->db->update($tbl, $flds);
         }
 
         function delete_fields($flds, $tbl, $where)
         {
             $this->db->where($where);
             $this->db->update($tbl, $flds);
+        }
+
+        function join_role_table()
+        {
+            $this->db->select('tr.*, ur.user_role');
+            $this->db->from('tbl_registration as tr');
+            $this->db->join('tbl_user_role as ur',"tr.role_id = ur.role_id");
+            $this->db->where('tr.reg_id != 1');
+            $this->db->order_by('tr.reg_id','asc');
+
+            $result = $this->db->get();
+
+            
+            return $result->result_array();
         }
     }
 ?>

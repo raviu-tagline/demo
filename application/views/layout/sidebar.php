@@ -6,13 +6,13 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="<?php echo base_url('assets/images/faces/face8.jpg')?>" alt="profile image">
+                  <img class="img-xs rounded-circle" src="<?php echo base_url('images/').$image_src['reg_image']?>" alt="profile image">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo !empty($name) ? $name['reg_first_name']." ".$name['reg_last_name']: ""; ?></p>
                   
-                  <p class="designation"><?php echo !empty($role) ? $role['user_role'] : "";?></p>
+                  <!-- <p class="designation"><?php echo !empty($role) ? $role['user_role'] : "";?></p> -->
                 </div>
               </a>
             </li>
@@ -73,16 +73,17 @@
                             <ul class="nav flex-column sub-menu">
 
                             <?php
-                              if($_SESSION['role_id'] == 1)
+                              if($_SESSION['role_id'] != 3)
                               {
                             ?>
                                   <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url('super_admin/add_admin');?>">Add Admin</a>
+                                    <a class="nav-link" href="<?php echo base_url('super_admin/add_user');?>">Add user</a>
                                   </li>
                             <?php 
                               }?>
                             
                             <?php
+                            /*
                               if($_SESSION['role_id'] != 3)
                               {
                             ?>
@@ -90,21 +91,34 @@
                                     <a class="nav-link" href="<?php echo $_SESSION['role_id'] == 1 ? base_url('super_admin/add_employee') : base_url('admin/add_employee');?>">Add Employee</a>
                                   </li>
 
-                                  <li class="nav-item">
+                                  <!-- <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url('project');?>">Manage Project</a>
-                                  </li>
-                        <?php }?>
+                                  </li> -->
+                        <?php } */
+                        ?>
 
                             </ul>
                           </div>
                         </li>
                     <?php }?>
 
+                    <?php
+                        if($_SESSION['role_id'] == 1)
+                        {
+                    ?>
+                          <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('super_admin/user_records');?>">
+                          <i class="menu-icon typcn typcn-th-large-outline"></i>
+                          <span class="menu-title">View User Data</span>
+                        </a>
+                      </li>
+                    <?php }?>
+
             <?php
                 if($_SESSION['role_id'] != 3)
                 {
             ?>
-                      <li class="nav-item">
+                      <!-- <li class="nav-item">
                         <a class="nav-link" href="<?php echo $_SESSION['role_id'] == 1 ? base_url('super_admin/salary') : base_url('admin/salary');?>">
                           <i class="menu-icon typcn typcn-shopping-bag"></i>
                           <span class="menu-title">Pay Salaries</span>
@@ -123,7 +137,7 @@
                           <i class="menu-icon typcn typcn-user-outline"></i>
                           <span class="menu-title">Check Queries</span>
                         </a>
-                      </li>
+                      </li> -->
 
             <?php
                 }
@@ -132,12 +146,12 @@
                 {
             ?>
             
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('super_admin/project_status');?>">
                       <i class="menu-icon typcn typcn-bell"></i>
                       <span class="menu-title">View Project Status</span>
                     </a>
-                  </li>
+                  </li> -->
             
             <?php
                 }
@@ -146,7 +160,7 @@
                 {
                   
             ?>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url('employee/profile');?>">
                         <i class="menu-icon typcn typcn-bell"></i>
                         <span class="menu-title">View Profile</span>
@@ -158,7 +172,7 @@
                         <i class="menu-icon typcn typcn-bell"></i>
                         <span class="menu-title">View Task</span>
                       </a>
-                    </li>
+                    </li> -->
 
               <?php
                 }

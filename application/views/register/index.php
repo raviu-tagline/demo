@@ -93,9 +93,22 @@
                         </div>
                     </div>
                 <?php } ?>
+
+                <div class="form-group">
+                    <div class="input-group">
+                    <input type="date" class="form-control" style="line-height: normal !important;" name="reg_birth_date" id="reg_birth_date" value="<?php echo set_value('reg_birth_date')?>" placeholder="Enter your birth date">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <input type="submit" id="submit" class="btn btn-primary submit-btn btn-block" value="Register">
                 </div>
+
                 <div class="text-block text-center my-3">
                     <span class="text-small font-weight-semibold">Already have and account ?</span>
                     <a href="<?php echo base_url()?>" class="text-black text-small">Login</a>

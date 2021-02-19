@@ -8,6 +8,8 @@
 
         function index()
         {
+
+            // $this->load->view('birthday');
             if(isset($_SESSION['role_id']))
             {
                 $role = $_SESSION['role_id'];

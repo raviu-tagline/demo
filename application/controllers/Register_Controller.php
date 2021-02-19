@@ -13,6 +13,8 @@
 
         function submit()
         {
+            $uri = $this->uri->segment(2);
+
             $this->form_validation->set_rules('reg_first_name','First Name','trim|required|regex_match[/^[a-zA-z]+/]', 
             array(
                 'required' => '%s Must Required',
@@ -31,15 +33,32 @@
                 'is_unique' => '%s Already exist'
             ));
 
+            $this->form_validation->set_rules('reg_birth_date','Birth Date','required',
+            array(
+                'required' => '%s Must Required'
+            ));
+
+            if($uri != NULL)
+            {
+                $this->form_validation->set_rules('role_id', 'Role', 'required', 
+                array(
+                    'required' => 'Must Specify %s'
+                ));
+            }
+
+            
             if($this->form_validation->run())
             {
                 $data['records'] = $_REQUEST;
 
                 $data['records']['reg_token'] = $this->generateToken();
 
-                $data['records']['role_id'] = 3;
-
                 $token = $data['records']['reg_token'];
+
+                if(!$_REQUEST['role_id'])
+                {
+                    $data['records']['role_id'] = 3;
+                }
 
                 // $image = $this->get_image();
                 // $data['records']['reg_image'] = $image['image_data']['file_name'];
@@ -63,19 +82,14 @@
                     {
                         $uri = $this->uri->segment(2);
 
-                        if($_SESSION['role_id'] == 1 && $uri == 'add_admin_data')
+                        if($_SESSION['role_id'] == 1)
                         {
-                            header('location: '.base_url('super_admin/add_admin'));
+                            header('location: '.base_url('super_admin/add_user'));
                         }
 
-                        if($_SESSION['role_id'] == 1 && $uri == 'add_employee_data')
+                        else
                         {
-                            header('location: '.base_url('super_admin/add_employee'));
-                        }
-
-                        if($_SESSION['role_id'] == 2 && $uri == 'add_employee_data')
-                        {
-                            header('location: '.base_url('admin/add_employee'));
+                           header('location: '.base_url('admin/add_user'));
                         }
                     }
                 }
@@ -107,7 +121,15 @@
             else
             {
                 $this->form_validation->set_error_delimiters('<p class="error">','</p>');
-                $this->load->view('Register/index.php');
+
+                if(isset($_SESSION['role_id']))
+                {
+                    $this->load->view('common/add_user.php'); 
+                }
+                else
+                {
+                    $this->load->view('Register/index.php');
+                }
             }
         }
 

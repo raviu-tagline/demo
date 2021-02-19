@@ -68,14 +68,16 @@ $route['change_password'] = 'Verify_Controller/submit';
 $route['super_admin/dashboard'] = 'super_admin/Super_Controller';
 $route['super_admin/project_status'] = 'super_admin/Super_Controller/status';
 $route['super_admin/add_admin'] = 'super_admin/Super_Controller/add_admin';
-$route['super_admin/add_admin_data'] = "Register_Controller/submit";
+// $route['super_admin/add_admin_data'] = "Register_Controller/submit";
 
+$route['super_admin'] = 'super_admin/Super_Controller';
 $route['super_admin/project'] = 'common/Common_Controller/project';
 $route['super_admin/salary'] = 'common/Common_Controller/salary';
 $route['super_admin/employee_profile'] = 'common/Common_Controller/employee';
 $route['super_admin/queries'] = 'common/Common_Controller/queries';
-$route['super_admin/add_employee'] = 'common/Common_Controller/add_employee';
-$route['super_admin/add_employee_data'] = 'Register_Controller/submit';
+
+// $route['super_admin/add_employee'] = 'common/Common_Controller/add_employee';
+// $route['super_admin/add_employee_data'] = 'Register_Controller/submit';
 
 $route['admin/dashboard'] = 'admin/Admin_Controller';
 
@@ -83,11 +85,22 @@ $route['admin/project'] = 'common/Common_Controller/project';
 $route['admin/salary'] = 'common/Common_Controller/salary';
 $route['admin/employee_profile'] = 'common/Common_Controller/employee';
 $route['admin/queries'] = 'common/Common_Controller/queries';
-$route['admin/add_employee'] = 'common/Common_Controller/add_employee';
-$route['admin/add_employee_data'] = 'Register_Controller/submit';
+
+// $route['admin/add_employee'] = 'common/Common_Controller/add_employee';
+$route[':any/add_employee_data'] = 'Register_Controller/submit';
 
 $route['employee/dashboard'] = 'employee/Employee_Controller';
-$route['employee/profile'] = 'employee/Employee_Controller/profile';
+// $route['employee/profile'] = 'employee/Employee_Controller/profile';
 $route['employee/tasks'] = 'employee/Employee_Controller/tasks';
 
+$route[':any/add_user'] = 'common/Common_Controller/add_user';
+
+$route[':any/profile'] = 'common/Common_Controller/profile';
+
+$route[':any/update_profile'] = 'common/Common_Controller/update_profile';
+
+$route['super_admin/user_records'] = 'super_admin/Super_Controller/user_records';
+
 $route['error'] = 'common/Common_Controller/error';
+
+// $route['Common_Controller/index'] = 'Common_Controller';

@@ -17,17 +17,20 @@
 
             if(isset($_SESSION['userID']) && $uri != NULL)
             {
-                if($uri != 'error')
+                if($uri != 'error' && $uri != 'email_verify')
                 {
                     $data['name'] = get_name();
 
                     $data['role'] = get_role();
+
+                    $data['image_src'] = get_image();
                     
                     $this->CI->load->view('Layout/header.php');
 
-                    $this->CI->load->view('Layout/navbar.php');
+                    $this->CI->load->view('Layout/navbar.php', $data);
 
                     $this->CI->load->view('Layout/sidebar.php', $data);
+
                 }
             }
             

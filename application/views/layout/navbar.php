@@ -3,10 +3,10 @@
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-          <a class="navbar-brand brand-logo" href="<?php echo base_url('index');?>">
+          <!-- <a class="navbar-brand brand-logo" href="<?php echo base_url('index');?>">
             <img src="<?php echo base_url('assets/images/logo.svg');?>" alt="logo" /> </a>
           <a class="navbar-brand brand-logo-mini" href="<?php echo base_url('index');?>">
-            <img src="<?php echo base_url('assets/images/logo-mini.svg');?>" alt="logo" /> </a>
+            <img src="<?php echo base_url('assets/images/logo-mini.svg');?>" alt="logo" /> </a> -->
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
           <!-- <ul class="navbar-nav">
@@ -131,17 +131,41 @@
             </li> -->
             <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle" src="<?php echo base_url('assets/images/faces/face8.jpg');?>" alt="Profile image"> </a>
+                <img class="img-xs rounded-circle" src="<?php echo base_url('images/').$image_src['reg_image'];?>" alt="Profile image"> </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="<?php echo base_url('assets/images/faces/face8.jpg');?>" alt="Profile image">
-                  <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                  <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                  <img class="img-md rounded-circle" src="<?php echo base_url('images/').$image_src['reg_image'];?>" alt="Profile image">
+                  <p class="mb-1 mt-3 font-weight-semibold">
+                    <?php echo !empty($name) ? $name['reg_first_name']." ".$name['reg_last_name']: ""; ?></p>
+                  <p class="font-weight-light text-muted mb-0">
+                    <?php echo !empty($role) ? $role['user_role'] : "";?>
+                  </p>
                 </div>
-                <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
-                <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
+                <?php
+                    if($_SESSION['role_id'] == 1)
+                    {?>
+                        <a class="dropdown-item" href="<?php echo base_url('super_admin/profile');?>">My Profile 
+                        <!-- <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i> -->
+                        </a>
+              <?php }
+
+                    if($_SESSION['role_id'] == 2)
+                    {?>
+                        <a class="dropdown-item" href="<?php echo base_url('admin/profile');?>">My Profile 
+                        <!-- <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i> -->
+                        </a>
+              <?php }
+
+                    if($_SESSION['role_id'] == 3)
+                    {?>
+                        <a class="dropdown-item" href="<?php echo base_url('employee/profile');?>">My Profile 
+                        <!-- <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i> -->
+                        </a>
+              <?php }
+                ?>
+                <!-- <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
                 <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
-                <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
+                <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a> -->
                 <a class="dropdown-item" href="<?php echo base_url('logout');?>">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
               </div>
             </li>
