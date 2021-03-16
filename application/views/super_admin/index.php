@@ -1,7 +1,11 @@
 
 <div class="main-panel">
     <div class="content-wrapper">
-        Dashboard of Super Admin.
+       <div class="card">
+            <div class="card-body">
+                <?php login_test();?>
+            </div>
+        </div>
     </div>
 
 <?php

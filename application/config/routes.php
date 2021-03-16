@@ -103,4 +103,6 @@ $route['super_admin/user_records'] = 'super_admin/Super_Controller/user_records'
 
 $route['error'] = 'common/Common_Controller/error';
 
+// $route['test'] = 'Register_Controller/test';
+
 // $route['Common_Controller/index'] = 'Common_Controller';

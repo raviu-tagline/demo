@@ -9,8 +9,9 @@
         {
             $this->CI =& get_instance();
             $uri = $this->CI->uri->segment(1);
+            $this->CI->load->library('unit_test');
 
-            if(!isset($_SESSION['userID']) && ($uri != NULL && $uri != 'register' && $uri != 'email_verify' && $uri != 'change_password' && $uri != 'login'))
+            if(!isset($_SESSION['userID']) && ($uri != NULL && $uri != 'register' && $uri != 'email_verify' && $uri != 'change_password' && $uri != 'login' && $uri != 'tests'))
             {
                 header('location: '.base_url());
             }

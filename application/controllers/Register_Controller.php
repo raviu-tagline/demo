@@ -184,5 +184,12 @@
                 return $data;
             }
         }
+
+        function test()
+        {
+            echo "Hello testing ----";
+            model_test();
+            die;
+        }
     }
 ?>
